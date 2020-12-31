@@ -493,6 +493,8 @@ public class gameManager : MonoBehaviour
         playerGrid.makeClickable();
 
 
+
+
        
 
         Pieces();       
