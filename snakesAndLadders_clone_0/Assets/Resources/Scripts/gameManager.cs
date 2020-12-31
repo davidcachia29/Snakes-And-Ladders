@@ -98,8 +98,7 @@ public class gameManager : MonoBehaviour
     }
 
     public void Pieces()
-    {
-        //Debug.Log("Pieces Method Entered");
+    {        
         if (PiecesCreated == false)
         {
             
@@ -149,6 +148,73 @@ public class gameManager : MonoBehaviour
                         Debug.Log(PlayerOneSpace + " " + xPos + " " + yPos);
                         getBoxPos(ProperLabeling[PlayerOneSpace]);
                         Debug.Log(PlayerOneSpace + " " + xPos + " " + yPos);
+
+                        //Ladders
+                        if (PlayerOneSpace == 1)
+                        {
+                            getBoxPos(ProperLabeling[44]);
+                            b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerOneSpace = 44;
+                        }
+                        if (PlayerOneSpace == 3)
+                        {
+                            getBoxPos(ProperLabeling[26]);
+                            b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerOneSpace = 26;
+                        }
+                        if (PlayerOneSpace == 8)
+                        {
+                            getBoxPos(ProperLabeling[30]);
+                            b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerOneSpace = 30;
+                        }
+                        if (PlayerOneSpace == 46)
+                        {
+                            getBoxPos(ProperLabeling[83]);
+                            b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerOneSpace = 83;
+                        }
+                        //Ladders
+
+                        //Snakes
+                        if (PlayerOneSpace == 15)
+                        {
+                            getBoxPos(ProperLabeling[7]);
+                            b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerOneSpace = 7;
+                        }
+                        if (PlayerOneSpace == 51)
+                        {
+                            getBoxPos(ProperLabeling[27]);
+                            b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerOneSpace = 27;
+                        }
+                        if (PlayerOneSpace == 77)
+                        {
+                            getBoxPos(ProperLabeling[24]);
+                            b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerOneSpace = 24;
+                        }
+                        if (PlayerOneSpace == 92)
+                        {
+                            getBoxPos(ProperLabeling[88]);
+                            b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerOneSpace = 88;
+                        }
+                        if (PlayerOneSpace == 94)
+                        {
+                            getBoxPos(ProperLabeling[74]);
+                            b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerOneSpace = 74;
+                        }
+                        if (PlayerOneSpace == 98)
+                        {
+                            getBoxPos(ProperLabeling[20]);
+                            b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerOneSpace = 20;
+                        }
+                        //Snakes
+
                         b.player1.transform.position = new Vector3(xPos - 0.6f, yPos);
                         CurrentPlaying = "Player2";
                         TurnEnded = true;
@@ -164,44 +230,78 @@ public class gameManager : MonoBehaviour
                         Debug.Log(PlayerOneSpace + " " + xPos + " " + yPos);
                         getBoxPos(ProperLabeling[PlayerOneSpace]);
                         Debug.Log(PlayerOneSpace + " " + xPos + " " + yPos);
+
+                        //Ladders
+                        if (PlayerOneSpace == 1)
+                        {
+                            getBoxPos(ProperLabeling[44]);
+                            b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerOneSpace = 44;
+                        }
+                        if (PlayerOneSpace == 3)
+                        {
+                            getBoxPos(ProperLabeling[26]);
+                            b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerOneSpace = 26;
+                        }
+                        if (PlayerOneSpace == 8)
+                        {
+                            getBoxPos(ProperLabeling[30]);
+                            b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerOneSpace = 30;
+                        }
+                        if (PlayerOneSpace == 46)
+                        {
+                            getBoxPos(ProperLabeling[83]);
+                            b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerOneSpace = 83;
+                        }
+                        //Ladders
+
+                        //Snakes
+                        if (PlayerOneSpace == 15)
+                        {
+                            getBoxPos(ProperLabeling[7]);
+                            b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerOneSpace = 7;
+                        }
+                        if (PlayerOneSpace == 51)
+                        {
+                            getBoxPos(ProperLabeling[27]);
+                            b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerOneSpace = 27;
+                        }
+                        if (PlayerOneSpace == 77)
+                        {
+                            getBoxPos(ProperLabeling[24]);
+                            b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerOneSpace = 24;
+                        }
+                        if (PlayerOneSpace == 92)
+                        {
+                            getBoxPos(ProperLabeling[88]);
+                            b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerOneSpace = 88;
+                        }
+                        if (PlayerOneSpace == 94)
+                        {
+                            getBoxPos(ProperLabeling[74]);
+                            b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerOneSpace = 74;
+                        }
+                        if (PlayerOneSpace == 98)
+                        {
+                            getBoxPos(ProperLabeling[20]);
+                            b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerOneSpace = 20;
+                        }
+                        //Snakes
+
                         b.player2.transform.position = new Vector3(xPos - 0.6f, yPos);
                         CurrentPlaying = "Player2";
                         TurnEnded = true;
                     }
                 }
-
-                //if (PLayerTwoColor == "Red")
-                //{
-                //    if (TurnEnded == false)
-                //    {
-                //        Debug.Log("First Looop Active");
-                //        //Debug.Log("Which player Pressed the button : " + NetworkManager.PlayerName);
-                //        //Debug.Log(PlayerOneSpace + " " + xPos + " " + yPos);
-                //        getBoxPos(allPos[PlayerTwoSpace]);
-                //        Debug.Log(PlayerOneSpace + " " + xPos + " " + yPos);
-                //        b.player1.transform.position = new Vector3(xPos - 0.6f, yPos);
-                //        CurrentPlaying = "Player2";
-                        
-                //    }
-                //}
-
-                
-
-                //if (PLayerTwoColor == "Blue")
-                //{
-                //    if (TurnEnded == false)
-                //    {
-                //        Debug.Log("First Looop Active");
-                //        //Debug.Log("Which player Pressed the button : " + NetworkManager.PlayerName);
-                //        //Debug.Log(PlayerOneSpace + " " + xPos + " " + yPos);
-                //        getBoxPos(allPos[PlayerOneSpace]);
-                //        Debug.Log(PlayerOneSpace + " " + xPos + " " + yPos);
-                //        b.player2.transform.position = new Vector3(xPos - 0.6f, yPos);
-                //        CurrentPlaying = "Player2";
-                        
-                //    }
-                //}
-
             }
 
             if (CurrentPlaying == "Player2")
@@ -213,9 +313,75 @@ public class gameManager : MonoBehaviour
                         Debug.Log("Second Looop Active");
                         //Debug.Log("GameStart Method Entered");
                         //Debug.Log("Which player Pressed the button : " + NetworkManager.PlayerName);
-                        //Debug.Log(PlayerOneSpace + " " + xPos + " " + yPos);
+                        //Debug.Log(PlayerOneSpace + " " + xPos + " " + yPos);                        
                         getBoxPos(ProperLabeling[PlayerTwoSpace]);
                         Debug.Log(PlayerOneSpace + " " + xPos + " " + yPos);
+
+                        //Ladders
+                        if (PlayerTwoSpace == 1)
+                        {
+                            getBoxPos(ProperLabeling[44]);
+                            b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerTwoSpace = 44;
+                        }
+                        if (PlayerTwoSpace == 3)
+                        {
+                            getBoxPos(ProperLabeling[26]);
+                            b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerTwoSpace = 26;
+                        }
+                        if (PlayerTwoSpace == 8)
+                        {
+                            getBoxPos(ProperLabeling[30]);
+                            b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerTwoSpace = 30;
+                        }
+                        if (PlayerTwoSpace == 46)
+                        {
+                            getBoxPos(ProperLabeling[83]);
+                            b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerTwoSpace = 83;
+                        }
+                        //Ladders
+
+                        //Snakes
+                        if (PlayerTwoSpace == 15)
+                        {
+                            getBoxPos(ProperLabeling[7]);
+                            b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerTwoSpace = 7;
+                        }
+                        if (PlayerTwoSpace == 51)
+                        {
+                            getBoxPos(ProperLabeling[27]);
+                            b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerTwoSpace = 27;
+                        }
+                        if (PlayerTwoSpace == 77)
+                        {
+                            getBoxPos(ProperLabeling[24]);
+                            b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerTwoSpace = 24;
+                        }
+                        if (PlayerTwoSpace == 92)
+                        {
+                            getBoxPos(ProperLabeling[88]);
+                            b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerTwoSpace = 88;
+                        }
+                        if (PlayerTwoSpace == 94)
+                        {
+                            getBoxPos(ProperLabeling[74]);
+                            b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerTwoSpace = 74;
+                        }
+                        if (PlayerTwoSpace == 98)
+                        {
+                            getBoxPos(ProperLabeling[20]);
+                            b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerTwoSpace = 20;
+                        }
+                        //Snakes
                         b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
                         CurrentPlaying = "Player1";
                         TurnEnded = true;
@@ -231,53 +397,81 @@ public class gameManager : MonoBehaviour
                         //Debug.Log("Which player Pressed the button : " + NetworkManager.PlayerName);
                         //Debug.Log(PlayerOneSpace + " " + xPos + " " + yPos);
                         getBoxPos(ProperLabeling[PlayerTwoSpace]);
-                        Debug.Log(PlayerOneSpace + " " + xPos + " " + yPos);
+
+                        //Ladders
+                        if (PlayerTwoSpace == 1)
+                        {
+                            getBoxPos(ProperLabeling[44]);
+                            b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerTwoSpace = 44;
+                        }
+                        if (PlayerTwoSpace == 3)
+                        {
+                            getBoxPos(ProperLabeling[26]);
+                            b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerTwoSpace = 26;
+                        }
+                        if (PlayerTwoSpace == 8)
+                        {
+                            getBoxPos(ProperLabeling[30]);
+                            b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerTwoSpace = 30;
+                        }
+                        if (PlayerTwoSpace == 46)
+                        {
+                            getBoxPos(ProperLabeling[83]);
+                            b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerTwoSpace = 83;
+                        }
+                        //Ladders
+
+                        //Snakes
+                        if (PlayerTwoSpace == 15)
+                        {
+                            getBoxPos(ProperLabeling[7]);
+                            b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerTwoSpace = 7;
+                        }
+                        if (PlayerTwoSpace == 51)
+                        {
+                            getBoxPos(ProperLabeling[27]);
+                            b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerTwoSpace = 27;
+                        }
+                        if (PlayerTwoSpace == 77)
+                        {
+                            getBoxPos(ProperLabeling[24]);
+                            b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerTwoSpace = 24;
+                        }
+                        if (PlayerTwoSpace == 92)
+                        {
+                            getBoxPos(ProperLabeling[88]);
+                            b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerTwoSpace = 88;
+                        }
+                        if (PlayerTwoSpace == 94)
+                        {
+                            getBoxPos(ProperLabeling[74]);
+                            b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerTwoSpace = 74;
+                        }
+                        if (PlayerTwoSpace == 98)
+                        {
+                            getBoxPos(ProperLabeling[20]);
+                            b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
+                            PlayerTwoSpace = 20;
+                        }
+                        //Snakes
+
+                        Debug.Log(PlayerOneSpace + " " + xPos + " " + yPos);                        
                         b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
                         CurrentPlaying = "Player1";
                         TurnEnded = true;
                     }
                 }
-
-                //if (PlayerOneColor == "Blue")
-                //{
-                //    if (TurnEnded == false)
-                //    {
-                //        Debug.Log("Second Looop Active");
-                //        Debug.Log("GameStart Method Entered");
-                //        Debug.Log("Which player Pressed the button : " + NetworkManager.PlayerName);
-                //        Debug.Log(PlayerOneSpace + " " + xPos + " " + yPos);
-                //        getBoxPos(allPos[PlayerTwoSpace]);
-                //        Debug.Log(PlayerOneSpace + " " + xPos + " " + yPos);
-                //        b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
-                //        CurrentPlaying = "Player1";
-                        
-                //    }
-                //}
-
-               
-
-                //if (PlayerOneColor == "Red")
-                //{
-                //    if (TurnEnded == false)
-                //    {
-                //        Debug.Log("Second Looop Active");
-                //        Debug.Log("GameStart Method Entered");
-                //        Debug.Log("Which player Pressed the button : " + NetworkManager.PlayerName);
-                //        Debug.Log(PlayerOneSpace + " " + xPos + " " + yPos);
-                //        getBoxPos(allPos[PlayerTwoSpace]);
-                //        Debug.Log(PlayerOneSpace + " " + xPos + " " + yPos);
-                //        b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
-                //        CurrentPlaying = "Player1";
-                        
-                //    }
-                //}
-
             }
-
-                //GameStart = false;
-
-                //GamePrep = true;
-            }        
+        }        
     }
    
     void Start()
@@ -473,20 +667,9 @@ public class gameManager : MonoBehaviour
         Debug.Log(randomNumberSteps);
         randomNumberSteps = 1;
         NetworkLayer.Move(NetworkManager.PlayerName, randomNumberSteps);
-        //GamePrep = false;
-        //Move(randomNumberSteps, NextPlayer);
-        //NextPlayer = "Player 2";      
-
+        
     }
 
-    //public void Move(int Steps)
-    //{
-    //    PlayerOneSpace = PlayerOneSpace + randomNumberSteps;
-    //    Debug.Log(PlayerOneSpace);
-    //    getBoxPos(allPos[PlayerOneSpace]);        
-    //    Pieces();
-
-    //}
     void Update()
     {
         if (gms.PlayerChosen == true & PlayersSaved == false)
@@ -498,13 +681,10 @@ public class gameManager : MonoBehaviour
         if (PlayersSaved == true & GamePrep == false)
         {
 
-            NetworkLayer.SetBoard(PlayerOneColor);
-            //GamePrep = true;
-            //PiecesCreated = true;
-            //GamePrep = true;
-            //Pieces();
-            //GamePrep = false;
+            NetworkLayer.SetBoard(PlayerOneColor);            
         }
+
+        
     }
 
 }
