@@ -32,12 +32,12 @@ public class NetworkLayer : MonoBehaviour
 
 
 
-    public static void SetColor(string playerName, string color)
+    public static void SetColor()
     {
-        ScriptsPhotonView.RPC("SetColorRPC", PhotonTargets.All, playerName, color);
+        ScriptsPhotonView.RPC("SetColorRPC", PhotonTargets.All);
     }
     [PunRPC]
-    public void SetColorRPC(string playerName, string color)
+    public void SetColorRPC()
     {
         GameObject.Find("Scripts").GetComponent<gameManager>().SetPlayerColors();
     }
@@ -58,7 +58,16 @@ public class NetworkLayer : MonoBehaviour
     }
 
 
-
+    public static void SetNames(string playerName)
+    {
+        ScriptsPhotonView.RPC("SetNamesRPC", PhotonTargets.All, playerName);
+    }
+    [PunRPC]
+    public void SetNamesRPC(string playerName)
+    {
+        
+        GameObject.Find("Scripts").GetComponent<gameManager>().SetPlayerName(playerName);
+    }
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info )
     {

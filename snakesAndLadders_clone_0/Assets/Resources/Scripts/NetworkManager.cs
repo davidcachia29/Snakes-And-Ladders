@@ -6,6 +6,7 @@ public class NetworkManager : MonoBehaviour
 {
 
     public GUIStyle TextStyle = new GUIStyle();
+    
     public GameObject myPlayer;
     public static string PlayerName;
     // Start is called before the first frame update

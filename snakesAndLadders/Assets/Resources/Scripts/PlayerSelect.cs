@@ -42,7 +42,7 @@ public class PlayerSelect : MonoBehaviour
                         PlayerTwoColor = "Blue";
                     }
                     PlayerChosen = true;
-                    gms.GameStart = true;
+                    //gms.GameStart = true;
                 }
 
                 if (hit.collider.gameObject.name == "Blue")
@@ -57,7 +57,7 @@ public class PlayerSelect : MonoBehaviour
                     }
                     PlayerChosen = true;
                     PlayerChosen = true;
-                    gms.GameStart = true;
+                    //gms.GameStart = true;
                 }
             }
         }

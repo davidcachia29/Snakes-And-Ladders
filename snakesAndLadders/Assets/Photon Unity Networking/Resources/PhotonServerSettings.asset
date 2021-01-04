@@ -40,4 +40,5 @@ MonoBehaviour:
   - RequestForPickupTimes
   - SetColorRPC
   - SetBoardRPC
+  - SetNamesRPC
   DisableAutoOpenWizard: 1

@@ -68,13 +68,14 @@ public class gameManager : MonoBehaviour
     String PlayerOneColor;
     String PLayerTwoColor;
 
-    
 
+    public bool PlayerNameSet;
     public float xPos;
     public float yPos;
 
-    GameObject gm;
+    GameObject gm, gm1;
     PlayerSelect gms;
+    UserNames gms1;
 
     bool PlayersSaved = false;
     public bool GamePrep = false;
@@ -82,7 +83,17 @@ public class gameManager : MonoBehaviour
     public string CurrentPlaying = "Player1";
     public bool TurnEnded = false;
 
+    float timeLeft = 30.0f;
+    public Text Timer;
+
+    public Text PlayerRedName;
+    public Text PlayerBlueName;
+
     
+    public Text Overlay;
+    public GameObject OverlayBlack;
+
+    string GMplayername;
     public void getBoxPos(string blockNum)
     {
         string[] tokens = blockNum.Split(',');
@@ -110,7 +121,7 @@ public class gameManager : MonoBehaviour
             b.player1.transform.localScale = new Vector3(3f, 3f);
             b.player1.name = "Red";
 
-            b.player2 = Instantiate(player, new Vector3(-2.5f * 3, -6f * 3), Quaternion.identity);
+            b.player2 = Instantiate(player, new Vector3((-4.5f + 1.5f) * 3, -6f * 3), Quaternion.identity);
             b.player2.GetComponent<SpriteRenderer>().color = Color.blue;
             b.player2.transform.SetParent(anchor.transform);
             b.player2.transform.localScale = new Vector3(3f, 3f);
@@ -476,6 +487,10 @@ public class gameManager : MonoBehaviour
    
     void Start()
     {
+
+        
+        
+
         sq = Resources.Load<GameObject>("Prefabs/Square");
 
         player = Resources.Load<GameObject>("Prefabs/Circle");
@@ -495,26 +510,29 @@ public class gameManager : MonoBehaviour
 
 
 
-       
 
-        Pieces();       
 
-        gm = GameObject.Find("Red");
-        gms = gm.GetComponent<PlayerSelect>();
 
-        
+        //Pieces();       
+
+        //gm = GameObject.Find("Red");
+        //gms = gm.GetComponent<PlayerSelect>();
+
+        gm1 = GameObject.Find("NameInput");
+        gms1 = gm1.GetComponent<UserNames>();
     }
 
 
-   
 
 
     
 
 
+
     public BattleshipGrid GenerateGrid(GameObject parentObject)
     {
-       
+        
+
         int rowcounter = 0;
         int columncounter = 0;
         int boxnumber = 0;
@@ -641,7 +659,7 @@ public class gameManager : MonoBehaviour
         //Debug.Log("Player 1 : " + gms.ChosenPlayer);       
 
         if (gms.PlayerOneColor == "Red")
-        {
+        {   
             PlayerOneColor = "Red";
             PLayerTwoColor = "Blue";
             //Debug.Log("Player 2 : Blue");
@@ -650,7 +668,7 @@ public class gameManager : MonoBehaviour
         }
 
         else
-        {
+        {     
             PlayerOneColor = "Blue";
             PLayerTwoColor = "Red";
             PlayersSaved = true;
@@ -672,19 +690,69 @@ public class gameManager : MonoBehaviour
         
     }
 
+    public void SetPlayerName(string PlayerName)
+    {
+        Debug.Log(NetworkManager.PlayerName);
+        if (NetworkManager.PlayerName == "Player1")
+        {
+            PlayerRedName.text = gms1.playername;
+            PlayerBlueName.text = PlayerName;
+        }
+        if (NetworkManager.PlayerName == "Player2")
+        {
+            PlayerRedName.text = PlayerName;
+            PlayerBlueName.text = gms1.playername;
+        }
+        Destroy(OverlayBlack);
+        PlayerNameSet = true;
+
+    }
+
     void Update()
     {
+        
+
+        if(PhotonNetwork.playerList.Length == 2)
+        {
+            timeLeft -= Time.deltaTime;
+            Timer.text = timeLeft.ToString();
+            if (timeLeft == 0)
+            {
+                Timer.text = "0";
+            }           
+            
+
+            Overlay.fontSize = 14;
+            Overlay.text = "Enter Your Player Name. You have :" + timeLeft;
+
+            if(PlayerNameSet == false)
+            {
+                if (timeLeft <= 0f)
+                {
+                    GMplayername = gms1.playername;
+                    Debug.Log(GMplayername);
+                    NetworkLayer.SetNames(GMplayername);
+                    Pieces();
+                }
+            }
+            
+        }
+
+
+        
+
         if (gms.PlayerChosen == true & PlayersSaved == false)
         {
-            NetworkLayer.SetColor(NetworkManager.PlayerName, gms.ChosenPlayer);            
+            NetworkLayer.SetColor();            
             PlayersSaved = true;
         }
 
         if (PlayersSaved == true & GamePrep == false)
         {
-
             NetworkLayer.SetBoard(PlayerOneColor);            
         }
+
+       
 
         
     }
