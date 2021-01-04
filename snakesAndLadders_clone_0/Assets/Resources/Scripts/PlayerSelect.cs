@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerSelect : MonoBehaviour
 {
-    public GameObject SpriteController;
+    //public GameObject SpriteController;
     public string ChosenPlayer;
     public bool PlayerChosen;
 
@@ -75,6 +75,9 @@ public class PlayerSelect : MonoBehaviour
     {
         if(gms.CurrentPlaying == "Player1")
         {
+            gms.PlayerRedName.color = Color.white;
+            gms.PlayerBlueName.color = Color.red;
+
             Debug.Log("MovePiece Method Entered");
             gms.PlayerOneSpace = gms.PlayerOneSpace + steps;
             //Debug.Log(gms.PlayerOneSpace);
@@ -92,6 +95,9 @@ public class PlayerSelect : MonoBehaviour
         {
             if(gms.TurnEnded == true)
             {
+                gms.PlayerRedName.color = Color.blue;
+                gms.PlayerBlueName.color = Color.white;
+
                 Debug.Log("MovePiece Method Entered");
                 gm = GameObject.Find("Scripts");
                 gms = gm.GetComponent<gameManager>();

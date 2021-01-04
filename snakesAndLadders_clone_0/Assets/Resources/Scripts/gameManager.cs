@@ -513,10 +513,10 @@ public class gameManager : MonoBehaviour
 
 
 
-        //Pieces();       
+        Pieces();       
 
-        //gm = GameObject.Find("Red");
-        //gms = gm.GetComponent<PlayerSelect>();
+        gm = GameObject.Find("Red");
+        gms = gm.GetComponent<PlayerSelect>();
 
         gm1 = GameObject.Find("NameInput");
         gms1 = gm1.GetComponent<UserNames>();
@@ -655,13 +655,19 @@ public class gameManager : MonoBehaviour
         return grid;        
     }
     public void SetPlayerColors()
-    {        
-        //Debug.Log("Player 1 : " + gms.ChosenPlayer);       
+    {
+        //Debug.Log("Player 1 : " + gms.ChosenPlayer);  
+
+        OverlayBlack.SetActive(false);
+        Overlay.transform.position = new Vector3(500, 500);
+        //Overlay.text = "Other Player Choosing Color";
 
         if (gms.PlayerOneColor == "Red")
         {   
             PlayerOneColor = "Red";
+            PlayerRedName.color = Color.red;
             PLayerTwoColor = "Blue";
+            PlayerBlueName.color = Color.blue;
             //Debug.Log("Player 2 : Blue");
             PlayersSaved = true;
             //NetworkLayer.SetColor("Player 2", "Blue");
@@ -670,8 +676,13 @@ public class gameManager : MonoBehaviour
         else
         {     
             PlayerOneColor = "Blue";
+            PlayerRedName.color = Color.blue;
             PLayerTwoColor = "Red";
+            PlayerBlueName.color = Color.red;
             PlayersSaved = true;
+
+
+            
             //Debug.Log("Player 2 : Red");
             //NetworkLayer.SetColor("Player 2", "Red");
         }
@@ -702,8 +713,15 @@ public class gameManager : MonoBehaviour
         {
             PlayerRedName.text = PlayerName;
             PlayerBlueName.text = gms1.playername;
+
+            OverlayBlack.SetActive(true);
+            Overlay.transform.position = new Vector3(50, 50);
+            Overlay.text = "Other Player Choosing Color";
         }
-        Destroy(OverlayBlack);
+
+        //Destroy(OverlayBlack);
+        
+
         PlayerNameSet = true;
 
     }
@@ -722,17 +740,21 @@ public class gameManager : MonoBehaviour
             }           
             
 
-            Overlay.fontSize = 14;
-            Overlay.text = "Enter Your Player Name. You have :" + timeLeft;
+            
 
             if(PlayerNameSet == false)
             {
+                Overlay.fontSize = 14;
+                Overlay.text = "Enter Your Player Name. You have :" + timeLeft;
+
                 if (timeLeft <= 0f)
                 {
+                    OverlayBlack.SetActive(false);
                     GMplayername = gms1.playername;
                     Debug.Log(GMplayername);
                     NetworkLayer.SetNames(GMplayername);
-                    Pieces();
+                    PlayerNameSet = true;
+                    Overlay.transform.position = new Vector3(500f, 500f);
                 }
             }
             
