@@ -58,6 +58,7 @@ public class NetworkLayer : MonoBehaviour
     }
 
 
+
     public static void SetNames(string playerName)
     {
         ScriptsPhotonView.RPC("SetNamesRPC", PhotonTargets.All, playerName);
@@ -68,6 +69,23 @@ public class NetworkLayer : MonoBehaviour
         
         GameObject.Find("Scripts").GetComponent<gameManager>().SetPlayerName(playerName);
     }
+
+
+
+
+    public static void Generate(string playerName)
+    {
+        ScriptsPhotonView.RPC("GenerateRpc", PhotonTargets.All, playerName);
+    }
+    [PunRPC]
+    public void GenerateRpc(string playerName)
+    {
+
+        GameObject.Find("Scripts").GetComponent<gameManager>().GenerateRandomNumber();
+    }
+
+
+
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info )
     {

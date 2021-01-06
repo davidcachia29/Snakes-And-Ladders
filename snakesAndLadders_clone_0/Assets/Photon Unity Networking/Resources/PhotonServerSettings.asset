@@ -41,4 +41,5 @@ MonoBehaviour:
   - SetColorRPC
   - SetBoardRPC
   - SetNamesRPC
+  - GenerateRpc
   DisableAutoOpenWizard: 1

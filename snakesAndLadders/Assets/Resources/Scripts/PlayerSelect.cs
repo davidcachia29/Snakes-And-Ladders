@@ -8,6 +8,8 @@ public class PlayerSelect : MonoBehaviour
     public string ChosenPlayer;
     public bool PlayerChosen;
 
+    public bool nextPlayer = false;
+
     public string PlayerOneColor;
     public string PlayerTwoColor;
 
@@ -87,35 +89,41 @@ public class PlayerSelect : MonoBehaviour
             gms.GamePrep = false;
             gms.Pieces();
             gms.GamePrep = true;
+            gms.CurrentPlaying = "Player2";
             yield return new WaitForSeconds(0.5f);
             gms.TurnEnded = false;
+            nextPlayer = true;
         }
 
         if (gms.CurrentPlaying == "Player2")
         {
-            if(gms.TurnEnded == true)
+            if (gms.TurnEnded == false)
             {
-                gms.PlayerRedName.color = Color.blue;
-                gms.PlayerBlueName.color = Color.white;
+                if (nextPlayer == false)
+                {
+                    gms.PlayerRedName.color = Color.white;
+                    gms.PlayerBlueName.color = Color.blue;
 
-                Debug.Log("MovePiece Method Entered");
-                gm = GameObject.Find("Scripts");
-                gms = gm.GetComponent<gameManager>();
-                gms.PlayerTwoSpace = gms.PlayerTwoSpace + steps;
-                //Debug.Log(gms.PlayerOneSpace);
-                gms.getBoxPos(gms.allPos[gms.PlayerTwoSpace]);
-                gms.GameStart = true;
-                gms.GamePrep = false;
-                gms.TurnEnded = false;
-                gms.Pieces();
-                gms.GamePrep = true;
-                yield return new WaitForSeconds(0.5f);
+                    Debug.Log("MovePiece Method Entered");
+                    gm = GameObject.Find("Scripts");
+                    gms = gm.GetComponent<gameManager>();
+                    gms.PlayerTwoSpace = gms.PlayerTwoSpace + steps;
+                    //Debug.Log(gms.PlayerOneSpace);
+                    gms.getBoxPos(gms.allPos[gms.PlayerTwoSpace]);
+                    gms.GameStart = true;
+                    gms.GamePrep = false;
+                    gms.TurnEnded = false;
+                    gms.Pieces();
+                    gms.GamePrep = true;
+                    gms.CurrentPlaying = "Player1";
+                    yield return null;
+                }
             }
-            gms.TurnEnded = true;
+            gms.TurnEnded = false;
             
         }
 
-
+        nextPlayer = false;
     }
 
     public void SetBoard()

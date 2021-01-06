@@ -46,9 +46,10 @@ public class gameManager : MonoBehaviour
 
     public bool PiecesCreated = false;
 
-    string NextPlayer = "Player 1";
+    
     public int PlayerOneSpace = 0;
     public int PlayerTwoSpace = 0;
+    public bool AutoRollOn = false;
 
     public int randomNumberSteps;
 
@@ -83,7 +84,7 @@ public class gameManager : MonoBehaviour
     public string CurrentPlaying = "Player1";
     public bool TurnEnded = false;
 
-    float timeLeft = 30.0f;
+    public float timeLeft = 30.0f;
     public Text Timer;
 
     public Text PlayerRedName;
@@ -227,7 +228,7 @@ public class gameManager : MonoBehaviour
                         //Snakes
 
                         b.player1.transform.position = new Vector3(xPos - 0.6f, yPos);
-                        CurrentPlaying = "Player2";
+                        //CurrentPlaying = "Player2";
                         TurnEnded = true;
                     }
                 }
@@ -308,8 +309,9 @@ public class gameManager : MonoBehaviour
                         }
                         //Snakes
 
+                        
                         b.player2.transform.position = new Vector3(xPos - 0.6f, yPos);
-                        CurrentPlaying = "Player2";
+                        //CurrentPlaying = "Player2";
                         TurnEnded = true;
                     }
                 }
@@ -394,7 +396,7 @@ public class gameManager : MonoBehaviour
                         }
                         //Snakes
                         b.player2.transform.position = new Vector3(xPos + 0.6f, yPos);
-                        CurrentPlaying = "Player1";
+                        //CurrentPlaying = "Player1";
                         TurnEnded = true;
                     }
                 }
@@ -477,11 +479,12 @@ public class gameManager : MonoBehaviour
 
                         Debug.Log(PlayerOneSpace + " " + xPos + " " + yPos);                        
                         b.player1.transform.position = new Vector3(xPos + 0.6f, yPos);
-                        CurrentPlaying = "Player1";
+                        //CurrentPlaying = "Player1";
                         TurnEnded = true;
                     }
                 }
             }
+            timeLeft = 10;
         }        
     }
    
@@ -679,26 +682,28 @@ public class gameManager : MonoBehaviour
             PlayerRedName.color = Color.blue;
             PLayerTwoColor = "Red";
             PlayerBlueName.color = Color.red;
-            PlayersSaved = true;
-
-
-            
+            PlayersSaved = true;            
             //Debug.Log("Player 2 : Red");
             //NetworkLayer.SetColor("Player 2", "Red");
         }
+        AutoRollOn = true;
+        timeLeft = 10;
     }        
 
     public void GenerateRandomNumber()
     {
-
+        
+        Debug.Log("Current Player Play" + CurrentPlaying);
         GameStart = true;
         
        
         randomNumberSteps = UnityEngine.Random.Range(1, 7);
         Debug.Log(randomNumberSteps);
         randomNumberSteps = 1;
-        NetworkLayer.Move(NetworkManager.PlayerName, randomNumberSteps);
-        
+
+
+        NetworkLayer.Move(CurrentPlaying, randomNumberSteps);
+        timeLeft = 10;
     }
 
     public void SetPlayerName(string PlayerName)
@@ -718,13 +723,12 @@ public class gameManager : MonoBehaviour
             Overlay.transform.position = new Vector3(50, 50);
             Overlay.text = "Other Player Choosing Color";
         }
-
-        //Destroy(OverlayBlack);
-        
+        //Destroy(OverlayBlack);       
 
         PlayerNameSet = true;
-
     }
+
+    
 
     void Update()
     {
@@ -749,6 +753,7 @@ public class gameManager : MonoBehaviour
 
                 if (timeLeft <= 0f)
                 {
+                    
                     OverlayBlack.SetActive(false);
                     GMplayername = gms1.playername;
                     Debug.Log(GMplayername);
@@ -773,6 +778,20 @@ public class gameManager : MonoBehaviour
         {
             NetworkLayer.SetBoard(PlayerOneColor);            
         }
+
+        if(AutoRollOn == true)
+        {
+            if(timeLeft <= 0)
+            {
+                timeLeft = 10;
+                randomNumberSteps = 1;
+                TurnEnded = false;
+                
+                GenerateRandomNumber();
+            }
+           
+        }
+     
 
        
 
