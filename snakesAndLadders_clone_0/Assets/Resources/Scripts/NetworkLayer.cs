@@ -84,6 +84,18 @@ public class NetworkLayer : MonoBehaviour
         GameObject.Find("Scripts").GetComponent<gameManager>().GenerateRandomNumber();
     }
 
+    public static void Finale(string playerName)
+    {
+        ScriptsPhotonView.RPC("FinaleRPC", PhotonTargets.All, playerName);
+    }
+    [PunRPC]
+    public void FinaleRPC(string playerName)
+    {
+
+        GameObject.Find("Scripts").GetComponent<gameManager>().Winner();
+    }
+
+
 
 
 

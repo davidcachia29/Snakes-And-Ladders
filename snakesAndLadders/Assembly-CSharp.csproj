@@ -91,6 +91,7 @@
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\FriendInfo.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\PickupItem.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\ServerSettings.cs" />
+    <Compile Include="Assets\Resources\Scripts\UserNames.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextButtonTransition.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewRotationModel.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Extensions.cs" />
@@ -120,7 +121,7 @@
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonView.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\InRoomChat.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerSelect.cs" />
-    <Compile Include="Assets\Resources\Scripts\UserNames.cs" />
+    <Compile Include="Assets\Resources\Scripts\SceneLoader.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\ParrelSync\VERSION.txt" />

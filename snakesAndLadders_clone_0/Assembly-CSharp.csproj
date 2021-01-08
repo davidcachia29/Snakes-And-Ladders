@@ -121,6 +121,7 @@
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonView.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\InRoomChat.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerSelect.cs" />
+    <Compile Include="Assets\Resources\Scripts\SceneLoader.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\ParrelSync\VERSION.txt" />

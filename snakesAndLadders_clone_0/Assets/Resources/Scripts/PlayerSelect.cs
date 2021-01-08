@@ -81,16 +81,52 @@ public class PlayerSelect : MonoBehaviour
             gms.PlayerBlueName.color = Color.red;
 
             Debug.Log("MovePiece Method Entered");
-            gms.PlayerOneSpace = gms.PlayerOneSpace + steps;
+            //gms.PlayerOneSpace = gms.PlayerOneSpace + steps;
+            
             //Debug.Log(gms.PlayerOneSpace);
             gms.getBoxPos(gms.allPos[gms.PlayerOneSpace]);
             gms.GameStart = true;
             gms.TurnEnded = false;
             gms.GamePrep = false;
-            gms.Pieces();
+            gms.FinalMovement = false;
+
+            for (int i = 1; i <= steps; i++)
+            {
+                if (gms.PlayerOneSpace > 99)
+                {
+                    gms.PlayerOneSpace = 99;
+                }
+
+                if (i == steps)
+                {
+                    gms.FinalMovement = true;
+                }
+                //Debug.Log("How Many Times Is This Running");
+                gms.PlayerOneSpace = gms.PlayerOneSpace + 1;
+                gms.TurnEnded = false;
+                yield return new WaitForSeconds(0.2f);
+                gms.GamePrep = true;
+                gms.Pieces();                
+                gms.FinalMovement = false;
+            }
+
+            
+
             gms.GamePrep = true;
             gms.CurrentPlaying = "Player2";
-            yield return new WaitForSeconds(0.5f);
+            if (steps == 6)
+            {
+                if (gms.CurrentPlaying == "Player1")
+                {
+                    gms.CurrentPlaying = "Player2";
+                }
+                if (gms.CurrentPlaying == "Player2")
+                {
+                    gms.CurrentPlaying = "Player1";
+                }
+            }
+
+           
             gms.TurnEnded = false;
             nextPlayer = true;
         }
@@ -107,13 +143,34 @@ public class PlayerSelect : MonoBehaviour
                     Debug.Log("MovePiece Method Entered");
                     gm = GameObject.Find("Scripts");
                     gms = gm.GetComponent<gameManager>();
-                    gms.PlayerTwoSpace = gms.PlayerTwoSpace + steps;
+                    //gms.PlayerTwoSpace = gms.PlayerTwoSpace + steps;
+
                     //Debug.Log(gms.PlayerOneSpace);
                     gms.getBoxPos(gms.allPos[gms.PlayerTwoSpace]);
                     gms.GameStart = true;
                     gms.GamePrep = false;
                     gms.TurnEnded = false;
-                    gms.Pieces();
+                    gms.FinalMovement = false;
+
+                    for (int i = 1; i <= steps; i++)
+                    {
+                        if (gms.PlayerOneSpace > 99)
+                        {
+                            gms.PlayerOneSpace = 99;
+                        }
+
+                        if (i == steps)
+                        {
+                            gms.FinalMovement = true;
+                        }
+
+                        gms.PlayerTwoSpace = gms.PlayerTwoSpace + 1;
+                        gms.Pieces();
+                        gms.TurnEnded = false;
+                        gms.FinalMovement = false;
+                    }
+
+                    
                     gms.GamePrep = true;
                     gms.CurrentPlaying = "Player1";
                     yield return null;

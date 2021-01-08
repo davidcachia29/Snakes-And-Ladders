@@ -42,4 +42,5 @@ MonoBehaviour:
   - SetBoardRPC
   - SetNamesRPC
   - GenerateRpc
+  - FinaleRPC
   DisableAutoOpenWizard: 1
