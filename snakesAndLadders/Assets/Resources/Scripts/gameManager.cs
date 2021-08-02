@@ -21,10 +21,10 @@ public class BattleshipGrid
         {
             b.toptile.AddComponent<Clicker>();
             b.setClickCoordinates();
-
         }
     }
 }
+
 public class Block
 {
     
@@ -41,6 +41,7 @@ public class Block
         }
     }
 }
+
 public class gameManager : MonoBehaviour
 {
 
@@ -49,21 +50,26 @@ public class gameManager : MonoBehaviour
     
     public int PlayerOneSpace = 0;
     public int PlayerTwoSpace = 0;
-    public bool AutoRollOn = false;
-
     public int randomNumberSteps;
+     public int shipid;
+    
+    public bool AutoRollOn = false;   
+        bool PlayersSaved = false;
+    public bool GamePrep = false;
+    public bool GameStart = false;
 
     public BattleshipGrid playerGrid;
+    
     public List<string> allPos = new List<string>(101);
     public List<string> ProperLabeling = new List<string>(101);
-    GameObject rowLabel, rowL, buttonPrefab, timerText, theTimer;
+    
 
     Block b = new Block();
 
     GameObject sq ,player, player1, player2;
-    
+    GameObject rowLabel, rowL, buttonPrefab, timerText, theTimer;
 
-    public int shipid;
+   
     public Button currentbutton;
 
     String PlayerOneColor;
@@ -78,9 +84,7 @@ public class gameManager : MonoBehaviour
     PlayerSelect gms;
     UserNames gms1;
 
-    bool PlayersSaved = false;
-    public bool GamePrep = false;
-    public bool GameStart = false;
+
     public string CurrentPlaying = "Player1";
     public bool TurnEnded = false;
 
